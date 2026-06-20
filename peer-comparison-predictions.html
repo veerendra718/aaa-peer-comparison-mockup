@@ -53,13 +53,28 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <!-- Card 1 (was 3) -->
+            <!-- Card 1 (Test Result — entry point) -->
+            <div onclick="showScreen('testresult')" class="bg-white rounded-xl shadow-sm border-2 border-gray-200 hover:border-green-400 hover:shadow-md cursor-pointer transition p-5 md:col-span-2">
+                <div class="flex items-start justify-between mb-2">
+                    <span class="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center text-xl">📝</span>
+                    <span class="text-xs text-gray-400">Entry &middot; PC-02</span>
+                </div>
+                <h2 class="font-semibold text-gray-800 text-lg">1 &middot; Test Result</h2>
+                <p class="text-sm text-gray-500 mt-1">The result a student sees right after submitting a test — score, pass status, correct/incorrect/unattempted, time taken and a section-wise breakdown. A button at the bottom leads into the <strong>Analytics Dashboard</strong> for peer comparison &amp; predictions.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Score summary</span>
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Section-wise</span>
+                    <span class="text-xs bg-green-50 border border-green-100 px-2 py-0.5 rounded text-green-600">→ Analytics Dashboard</span>
+                </div>
+            </div>
+
+            <!-- Card 2 (was 1) -->
             <div onclick="showScreen('acknowledge')" class="bg-white rounded-xl shadow-sm border-2 border-gray-200 hover:border-green-400 hover:shadow-md cursor-pointer transition p-5">
                 <div class="flex items-start justify-between mb-2">
                     <span class="w-10 h-10 bg-yellow-100 text-yellow-700 rounded-lg flex items-center justify-center text-xl">🔮</span>
                     <span class="text-xs text-gray-400">PC-40 → PC-41</span>
                 </div>
-                <h2 class="font-semibold text-gray-800 text-lg">1 &middot; First-Time Disclaimer</h2>
+                <h2 class="font-semibold text-gray-800 text-lg">2 &middot; First-Time Disclaimer</h2>
                 <p class="text-sm text-gray-500 mt-1">The one-time acknowledgment a first-time user must accept before predictions are revealed. Button stays disabled until the checkbox is ticked; acknowledgment timestamp is recorded.</p>
                 <div class="flex flex-wrap gap-1.5 mt-3">
                     <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Modal</span>
@@ -73,7 +88,7 @@
                     <span class="w-10 h-10 bg-gray-100 text-gray-600 rounded-lg flex items-center justify-center text-xl">🔒</span>
                     <span class="text-xs text-gray-400">PC-28 &middot; PC-22</span>
                 </div>
-                <h2 class="font-semibold text-gray-800 text-lg">2 &middot; Not Enough Data</h2>
+                <h2 class="font-semibold text-gray-800 text-lg">3 &middot; Not Enough Data</h2>
                 <p class="text-sm text-gray-500 mt-1">Empty states: predicted score locked until 5 full-length mocks are done (progress shown), and percentile gated until a test has at least 10 takers. Disclaimer still visible.</p>
                 <div class="flex flex-wrap gap-1.5 mt-3">
                     <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Empty state</span>
@@ -87,7 +102,7 @@
                     <span class="w-10 h-10 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center text-xl">📈</span>
                     <span class="text-xs text-gray-400">PC-01 → PC-39</span>
                 </div>
-                <h2 class="font-semibold text-gray-800 text-lg">3 &middot; Analytics Dashboard <span class="text-sm font-normal text-gray-400">— two tabs</span></h2>
+                <h2 class="font-semibold text-gray-800 text-lg">4 &middot; Analytics Dashboard <span class="text-sm font-normal text-gray-400">— two tabs</span></h2>
                 <p class="text-sm text-gray-500 mt-1">One page with two tabs. <strong>Analytics Dashboard</strong> tab: peer comparison summary, percentile rank (with trend &amp; by-subject), predicted exam score range, predicted rank, prediction trend, subject-wise predictions, what-to-improve, plus the always-on disclaimer. <strong>Peer Comparison</strong> tab: per-test detail — My Score vs Class Average and vs anonymous Topper, % difference, marks gap, topper's time, subject-wise breakdown and a gap-based motivational message.</p>
                 <div class="flex flex-wrap gap-1.5 mt-3">
                     <span class="text-xs bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded text-indigo-600">📈 Dashboard tab</span>
@@ -101,6 +116,103 @@
 
         <div class="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-700">
             <strong>💡 Note:</strong> These are static, click-through mockups with sample data (student &ldquo;Ananya S.&rdquo;, NEET). Numbers and copy are illustrative and not wired to any backend.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 0b: TEST RESULT SUMMARY (entry → links to dashboard)   -->
+    <!-- ============================================================ -->
+    <section id="screen-testresult" class="screen">
+      <div class="max-w-6xl mx-auto p-6">
+        <div class="mb-5">
+            <p class="text-xs text-gray-400 mb-1">Tests &nbsp;›&nbsp; Result</p>
+            <h1 class="text-2xl font-bold text-gray-800">NEET Full Mock Test &mdash; Set 5</h1>
+            <p class="text-gray-500 text-sm">Submitted 18 Jun 2026 &middot; 180 questions &middot; 720 marks &middot; Duration 3h</p>
+        </div>
+
+        <!-- Result hero -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6 flex flex-col md:flex-row items-center gap-6">
+            <div class="text-center md:border-r md:pr-8">
+                <p class="text-xs text-gray-400 uppercase tracking-wide">Your Score</p>
+                <p class="text-5xl font-extrabold text-blue-600">540<span class="text-xl text-gray-400 font-medium">/720</span></p>
+                <span class="inline-block mt-2 bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">✓ Passed &middot; 75%</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 flex-1 w-full">
+                <div class="text-center bg-green-50 rounded-lg py-3">
+                    <p class="text-2xl font-bold text-green-600">141</p>
+                    <p class="text-xs text-gray-500">Correct</p>
+                </div>
+                <div class="text-center bg-red-50 rounded-lg py-3">
+                    <p class="text-2xl font-bold text-red-600">24</p>
+                    <p class="text-xs text-gray-500">Incorrect</p>
+                </div>
+                <div class="text-center bg-gray-50 rounded-lg py-3">
+                    <p class="text-2xl font-bold text-gray-600">15</p>
+                    <p class="text-xs text-gray-500">Unattempted</p>
+                </div>
+                <div class="text-center bg-blue-50 rounded-lg py-3">
+                    <p class="text-2xl font-bold text-blue-600">2h 48m</p>
+                    <p class="text-xs text-gray-500">Time taken</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section-wise breakdown -->
+        <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="px-5 py-4 border-b"><h2 class="font-semibold text-gray-800">📋 Section-wise breakdown</h2></div>
+            <div class="p-5 overflow-x-auto">
+                <table class="w-full text-sm min-w-[560px]">
+                    <thead>
+                        <tr class="text-left text-xs text-gray-500 uppercase tracking-wide border-b">
+                            <th class="py-2 pr-4 font-semibold">Subject</th>
+                            <th class="py-2 px-3 font-semibold">Marks</th>
+                            <th class="py-2 px-3 font-semibold">Correct</th>
+                            <th class="py-2 px-3 font-semibold">Incorrect</th>
+                            <th class="py-2 px-3 font-semibold">Unattempted</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y">
+                        <tr>
+                            <td class="py-3 pr-4 font-medium text-gray-700">Physics</td>
+                            <td class="py-3 px-3 font-semibold text-gray-800">132 <span class="text-gray-400 font-normal">/180</span></td>
+                            <td class="py-3 px-3 text-green-600">35</td>
+                            <td class="py-3 px-3 text-red-600">8</td>
+                            <td class="py-3 px-3 text-gray-500">2</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 pr-4 font-medium text-gray-700">Chemistry</td>
+                            <td class="py-3 px-3 font-semibold text-gray-800">120 <span class="text-gray-400 font-normal">/180</span></td>
+                            <td class="py-3 px-3 text-green-600">32</td>
+                            <td class="py-3 px-3 text-red-600">8</td>
+                            <td class="py-3 px-3 text-gray-500">5</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 pr-4 font-medium text-gray-700">Biology</td>
+                            <td class="py-3 px-3 font-semibold text-gray-800">288 <span class="text-gray-400 font-normal">/360</span></td>
+                            <td class="py-3 px-3 text-green-600">74</td>
+                            <td class="py-3 px-3 text-red-600">8</td>
+                            <td class="py-3 px-3 text-gray-500">8</td>
+                        </tr>
+                        <tr class="bg-gray-50 font-semibold">
+                            <td class="py-3 pr-4 text-gray-800">Total</td>
+                            <td class="py-3 px-3 text-gray-800">540 <span class="text-gray-400 font-normal">/720</span></td>
+                            <td class="py-3 px-3 text-green-600">141</td>
+                            <td class="py-3 px-3 text-red-600">24</td>
+                            <td class="py-3 px-3 text-gray-500">15</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- CTA to analytics dashboard -->
+        <div class="bg-white rounded-lg shadow-sm p-5 flex items-center justify-between flex-wrap gap-3">
+            <div>
+                <p class="font-semibold text-gray-800">See how you compare &amp; your predicted exam score</p>
+                <p class="text-sm text-gray-500">Peer comparison, percentile and faculty-calibrated predictions on your analytics dashboard.</p>
+            </div>
+            <button onclick="showScreen('dashboard')" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 text-sm font-semibold transition flex items-center gap-2">📊 View Analytics Dashboard →</button>
         </div>
       </div>
     </section>
