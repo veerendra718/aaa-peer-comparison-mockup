@@ -44,7 +44,7 @@
         <div class="mb-6">
             <p class="text-xs text-gray-400 mb-1">Phase 3 &nbsp;›&nbsp; P3-02</p>
             <h1 class="text-2xl font-bold text-gray-800">Peer Comparison &amp; Predictions &mdash; Mockups</h1>
-            <p class="text-gray-500 text-sm max-w-3xl mt-1">Advanced analytics that let a student compare performance with peers (anonymously) and see AI/faculty-calibrated predicted exam scores. The four screens below cover the student-facing functional requirements. Click a card to open it.</p>
+            <p class="text-gray-500 text-sm max-w-3xl mt-1">Advanced analytics that let a student compare performance with peers (anonymously) and see AI/faculty-calibrated predicted exam scores. The cards below cover the student-facing functional requirements. Click a card to open it.</p>
             <div class="flex flex-wrap gap-2 mt-3">
                 <span class="text-xs bg-green-100 text-green-700 px-2.5 py-1 rounded-full font-medium">Priority: P1 (Should Have)</span>
                 <span class="text-xs bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full font-medium">Standard &amp; Advanced tiers</span>
@@ -81,33 +81,20 @@
                 </div>
             </div>
 
-            <!-- Card 3 (was 1) -->
-            <div onclick="showScreen('dashboard')" class="bg-white rounded-xl shadow-sm border-2 border-gray-200 hover:border-green-400 hover:shadow-md cursor-pointer transition p-5">
+            <!-- Card 3 (merged: Analytics Dashboard + Peer Comparison as tabs) -->
+            <div onclick="showScreen('dashboard')" class="bg-white rounded-xl shadow-sm border-2 border-gray-200 hover:border-green-400 hover:shadow-md cursor-pointer transition p-5 md:col-span-2">
                 <div class="flex items-start justify-between mb-2">
                     <span class="w-10 h-10 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center text-xl">📈</span>
-                    <span class="text-xs text-gray-400">PC-03 &middot; PC-17 → PC-39</span>
+                    <span class="text-xs text-gray-400">PC-01 → PC-39</span>
                 </div>
-                <h2 class="font-semibold text-gray-800 text-lg">3 &middot; Analytics Dashboard</h2>
-                <p class="text-sm text-gray-500 mt-1">The student's home for analytics — peer comparison summary (vs class average &amp; topper, with above/below indicators); percentile rank with trend, by-subject and by-exam-type; predicted exam score range, predicted rank, prediction trend, subject-wise predictions, what-to-improve, plus the always-on disclaimer.</p>
+                <h2 class="font-semibold text-gray-800 text-lg">3 &middot; Analytics Dashboard <span class="text-sm font-normal text-gray-400">— two tabs</span></h2>
+                <p class="text-sm text-gray-500 mt-1">One page with two tabs. <strong>Analytics Dashboard</strong> tab: peer comparison summary, percentile rank (with trend &amp; by-subject), predicted exam score range, predicted rank, prediction trend, subject-wise predictions, what-to-improve, plus the always-on disclaimer. <strong>Peer Comparison</strong> tab: per-test detail — My Score vs Class Average and vs anonymous Topper, % difference, marks gap, topper's time, subject-wise breakdown and a gap-based motivational message.</p>
                 <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="text-xs bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded text-indigo-600">📈 Dashboard tab</span>
+                    <span class="text-xs bg-green-50 border border-green-100 px-2 py-0.5 rounded text-green-600">📊 Peer Comparison tab</span>
                     <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Percentile</span>
-                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Predicted range</span>
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Predictions</span>
                     <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Disclaimer</span>
-                </div>
-            </div>
-
-            <!-- Card 4 (was 2) -->
-            <div onclick="showScreen('results')" class="bg-white rounded-xl shadow-sm border-2 border-gray-200 hover:border-green-400 hover:shadow-md cursor-pointer transition p-5">
-                <div class="flex items-start justify-between mb-2">
-                    <span class="w-10 h-10 bg-green-100 text-green-700 rounded-lg flex items-center justify-center text-xl">📊</span>
-                    <span class="text-xs text-gray-400">PC-01 → PC-16</span>
-                </div>
-                <h2 class="font-semibold text-gray-800 text-lg">4 &middot; Peer Comparison</h2>
-                <p class="text-sm text-gray-500 mt-1">Reached from the dashboard's &ldquo;View detail — Peer Comparison&rdquo; link. My Score vs Class Average and vs anonymous Topper for a single test — bar charts, % difference, marks gap, topper's time taken, subject-wise breakdown and a gap-based motivational message.</p>
-                <div class="flex flex-wrap gap-1.5 mt-3">
-                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Class average</span>
-                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Topper gap</span>
-                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Anonymous</span>
                 </div>
             </div>
         </div>
@@ -123,6 +110,11 @@
     <!-- ============================================================ -->
     <section id="screen-results" class="screen">
       <div class="max-w-6xl mx-auto p-6">
+        <!-- Sub-tabs unifying Dashboard + Peer Comparison -->
+        <div class="flex gap-1 mb-5 border-b border-gray-200">
+            <button onclick="showScreen('dashboard')" class="px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700">📈 Analytics Dashboard</button>
+            <button onclick="showScreen('results')" class="px-4 py-2.5 text-sm font-semibold border-b-2 border-green-600 text-green-700 -mb-px">📊 Peer Comparison</button>
+        </div>
         <div class="mb-5">
             <p class="text-xs text-gray-400 mb-1">Test Results &nbsp;›&nbsp; Peer Comparison</p>
             <h1 class="text-2xl font-bold text-gray-800">NEET Full Mock Test &mdash; Set 5</h1>
@@ -266,6 +258,11 @@
     <!-- ============================================================ -->
     <section id="screen-dashboard" class="screen">
       <div class="max-w-6xl mx-auto p-6">
+        <!-- Sub-tabs unifying Dashboard + Peer Comparison -->
+        <div class="flex gap-1 mb-5 border-b border-gray-200">
+            <button onclick="showScreen('dashboard')" class="px-4 py-2.5 text-sm font-semibold border-b-2 border-green-600 text-green-700 -mb-px">📈 Analytics Dashboard</button>
+            <button onclick="showScreen('results')" class="px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700">📊 Peer Comparison</button>
+        </div>
         <div class="mb-5 flex items-end justify-between flex-wrap gap-2">
             <div>
                 <p class="text-xs text-gray-400 mb-1">Analytics Dashboard</p>
