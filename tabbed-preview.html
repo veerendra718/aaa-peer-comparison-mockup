@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peer Comparison & Predictions - AAA LMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .screen { display: none; }
+        .screen.active { display: block; }
+        .tab-active { @apply bg-green-600 text-white; }
+        .bar-track { background: #e5e7eb; border-radius: 9999px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 9999px; transition: width .4s ease; }
+        .fade-in { animation: fade .25s ease; }
+        @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-green-700 text-white px-6 py-4 flex justify-between items-center shadow-md">
+        <div class="flex items-center space-x-4">
+            <span class="text-2xl font-bold">🎓 AAA LMS</span>
+            <span class="text-green-200">|</span>
+            <span>Peer Comparison &amp; Predictions</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <span class="text-sm">👤 Student: Ananya S. &middot; Class 12 (NEET)</span>
+            <span class="bg-green-600 px-2 py-1 rounded text-xs">Advanced Tier</span>
+        </div>
+    </header>
+
+    <!-- Back-to-index bar (hidden on the index screen) -->
+    <div id="backBar" class="bg-white border-b shadow-sm sticky top-0 z-30" style="display:block;">
+        <div class="max-w-6xl mx-auto px-6 py-2">
+            <button onclick="showScreen('index')" class="text-sm text-green-700 hover:text-green-900 font-medium flex items-center gap-1">&larr; All Mockups</button>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 0: INDEX / ALL MOCKUPS                                 -->
+    <!-- ============================================================ -->
+    <section id="screen-index" class="screen">
+      <div class="max-w-6xl mx-auto p-6">
+        <div class="mb-6">
+            <p class="text-xs text-gray-400 mb-1">Phase 3 &nbsp;›&nbsp; P3-02</p>
+            <h1 class="text-2xl font-bold text-gray-800">Peer Comparison &amp; Predictions &mdash; Mockups</h1>
+            <p class="text-gray-500 text-sm max-w-3xl mt-1">Advanced analytics that let a student compare performance with peers (anonymously) and see AI/faculty-calibrated predicted exam scores. The four screens below cover the student-facing functional requirements. Click a card to open it.</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+                <span class="text-xs bg-green-100 text-green-700 px-2.5 py-1 rounded-full font-medium">Priority: P1 (Should Have)</span>
+                <span class="text-xs bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full font-medium">Standard &amp; Advanced tiers</span>
+                <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full font-medium">Ref: ORD 4.3.2 &middot; Agenda §18</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Card 1 (was 3) -->
+            <div onclick="showScreen('acknowledge')" class="bg-white rounded-xl shadow-sm border-2 border-gray-200 hover:border-green-400 hover:shadow-md cursor-pointer transition p-5">
+                <div class="flex items-start justify-between mb-2">
+                    <span class="w-10 h-10 bg-yellow-100 text-yellow-700 rounded-lg flex items-center justify-center text-xl">🔮</span>
+                    <span class="text-xs text-gray-400">PC-40 → PC-41</span>
+                </div>
+                <h2 class="font-semibold text-gray-800 text-lg">1 &middot; First-Time Disclaimer</h2>
+                <p class="text-sm text-gray-500 mt-1">The one-time acknowledgment a first-time user must accept before predictions are revealed. Button stays disabled until the checkbox is ticked; acknowledgment timestamp is recorded.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Modal</span>
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Acknowledge</span>
+                </div>
+            </div>
+
+            <!-- Card 2 (was 4) -->
+            <div onclick="showScreen('empty')" class="bg-white rounded-xl shadow-sm border-2 border-gray-200 hover:border-green-400 hover:shadow-md cursor-pointer transition p-5">
+                <div class="flex items-start justify-between mb-2">
+                    <span class="w-10 h-10 bg-gray-100 text-gray-600 rounded-lg flex items-center justify-center text-xl">🔒</span>
+                    <span class="text-xs text-gray-400">PC-28 &middot; PC-22</span>
+                </div>
+                <h2 class="font-semibold text-gray-800 text-lg">2 &middot; Not Enough Data</h2>
+                <p class="text-sm text-gray-500 mt-1">Empty states: predicted score locked until 5 full-length mocks are done (progress shown), and percentile gated until a test has at least 10 takers. Disclaimer still visible.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Empty state</span>
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Threshold gate</span>
+                </div>
+            </div>
+
+            <!-- Card 3 (was 1) -->
+            <div onclick="showScreen('dashboard')" class="bg-white rounded-xl shadow-sm border-2 border-gray-200 hover:border-green-400 hover:shadow-md cursor-pointer transition p-5">
+                <div class="flex items-start justify-between mb-2">
+                    <span class="w-10 h-10 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center text-xl">📈</span>
+                    <span class="text-xs text-gray-400">PC-03 &middot; PC-17 → PC-39</span>
+                </div>
+                <h2 class="font-semibold text-gray-800 text-lg">3 &middot; Analytics Dashboard</h2>
+                <p class="text-sm text-gray-500 mt-1">The student's home for analytics — peer comparison summary (vs class average &amp; topper, with above/below indicators); percentile rank with trend, by-subject and by-exam-type; predicted exam score range, predicted rank, prediction trend, subject-wise predictions, what-to-improve, plus the always-on disclaimer.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Percentile</span>
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Predicted range</span>
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Disclaimer</span>
+                </div>
+            </div>
+
+            <!-- Card 4 (was 2) -->
+            <div onclick="showScreen('results')" class="bg-white rounded-xl shadow-sm border-2 border-gray-200 hover:border-green-400 hover:shadow-md cursor-pointer transition p-5">
+                <div class="flex items-start justify-between mb-2">
+                    <span class="w-10 h-10 bg-green-100 text-green-700 rounded-lg flex items-center justify-center text-xl">📊</span>
+                    <span class="text-xs text-gray-400">PC-01 → PC-16</span>
+                </div>
+                <h2 class="font-semibold text-gray-800 text-lg">4 &middot; Peer Comparison</h2>
+                <p class="text-sm text-gray-500 mt-1">Reached from the dashboard's &ldquo;View detail — Peer Comparison&rdquo; link. My Score vs Class Average and vs anonymous Topper for a single test — bar charts, % difference, marks gap, topper's time taken, subject-wise breakdown and a gap-based motivational message.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Class average</span>
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Topper gap</span>
+                    <span class="text-xs bg-gray-50 border border-gray-200 px-2 py-0.5 rounded text-gray-500">Anonymous</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-700">
+            <strong>💡 Note:</strong> These are static, click-through mockups with sample data (student &ldquo;Ananya S.&rdquo;, NEET). Numbers and copy are illustrative and not wired to any backend.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 1: TEST RESULTS - PEER COMPARISON (PC-1 + PC-2)        -->
+    <!-- ============================================================ -->
+    <section id="screen-results" class="screen">
+      <div class="max-w-6xl mx-auto p-6">
+        <!-- TABBED PREVIEW: sub-tabs unifying Dashboard + Peer Comparison -->
+        <div class="flex gap-1 mb-5 border-b border-gray-200">
+            <button onclick="showScreen('dashboard')" class="px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700">📈 Analytics Dashboard</button>
+            <button onclick="showScreen('results')" class="px-4 py-2.5 text-sm font-semibold border-b-2 border-green-600 text-green-700 -mb-px">📊 Peer Comparison</button>
+        </div>
+        <div class="mb-5">
+            <p class="text-xs text-gray-400 mb-1">Test Results &nbsp;›&nbsp; Peer Comparison</p>
+            <h1 class="text-2xl font-bold text-gray-800">NEET Full Mock Test &mdash; Set 5</h1>
+            <p class="text-gray-500 text-sm">Submitted 18 Jun 2026 &middot; 180 questions &middot; 720 marks</p>
+        </div>
+
+        <!-- My Result stat tiles -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-lg shadow-sm p-5">
+                <p class="text-xs text-gray-400 uppercase tracking-wide">My Score</p>
+                <p class="text-3xl font-bold text-blue-600">540<span class="text-base text-gray-400 font-medium">/720</span></p>
+                <p class="text-sm text-gray-500">75% &middot; Passed</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm p-5">
+                <p class="text-xs text-gray-400 uppercase tracking-wide">Class Average</p>
+                <p class="text-3xl font-bold text-gray-500">432<span class="text-base text-gray-400 font-medium">/720</span></p>
+                <p class="text-sm text-gray-500">60% &middot; 47 students</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm p-5">
+                <p class="text-xs text-gray-400 uppercase tracking-wide">Topper Score</p>
+                <p class="text-3xl font-bold text-amber-500">612<span class="text-base text-gray-400 font-medium">/720</span></p>
+                <p class="text-sm text-gray-500">85% &middot; 🔒 Anonymous</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm p-5">
+                <p class="text-xs text-gray-400 uppercase tracking-wide">Percentile</p>
+                <p class="text-3xl font-bold text-green-600">Top 15%</p>
+                <p class="text-sm text-gray-500">of 47 test takers</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- PC-1: vs Class Average -->
+            <div class="bg-white rounded-lg shadow-sm">
+                <div class="px-5 py-4 border-b flex items-center justify-between">
+                    <h2 class="font-semibold text-gray-800">📊 My Score vs Class Average</h2>
+                    <span class="bg-green-100 text-green-700 text-sm font-semibold px-3 py-1 rounded-full">▲ +15% above average</span>
+                </div>
+                <div class="p-5 space-y-4">
+                    <!-- Overall bars -->
+                    <div>
+                        <div class="flex justify-between text-sm mb-1"><span class="font-medium text-gray-700">You</span><span class="font-semibold text-blue-600">540 (75%)</span></div>
+                        <div class="bar-track h-4"><div class="bar-fill bg-blue-500" style="width:75%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1"><span class="font-medium text-gray-700">Class Average</span><span class="font-semibold text-gray-500">432 (60%)</span></div>
+                        <div class="bar-track h-4"><div class="bar-fill bg-gray-400" style="width:60%"></div></div>
+                    </div>
+
+                    <!-- Subject-wise (PC-07) -->
+                    <div class="pt-3 border-t">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Subject-wise comparison</p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Physics</span><span class="text-green-600 font-medium">+13%</span></div>
+                                <div class="bar-track h-3 mb-1"><div class="bar-fill bg-blue-500" style="width:73%"></div></div>
+                                <div class="bar-track h-3"><div class="bar-fill bg-gray-300" style="width:60%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Chemistry</span><span class="text-green-600 font-medium">+6%</span></div>
+                                <div class="bar-track h-3 mb-1"><div class="bar-fill bg-blue-500" style="width:67%"></div></div>
+                                <div class="bar-track h-3"><div class="bar-fill bg-gray-300" style="width:61%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Biology</span><span class="text-green-600 font-medium">+21%</span></div>
+                                <div class="bar-track h-3 mb-1"><div class="bar-fill bg-blue-500" style="width:80%"></div></div>
+                                <div class="bar-track h-3"><div class="bar-fill bg-gray-300" style="width:59%"></div></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 mt-3 text-xs text-gray-500">
+                            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm bg-blue-500 inline-block"></span> You</span>
+                            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm bg-gray-300 inline-block"></span> Class average</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PC-2: vs Topper -->
+            <div class="bg-white rounded-lg shadow-sm">
+                <div class="px-5 py-4 border-b flex items-center justify-between">
+                    <h2 class="font-semibold text-gray-800">🏆 My Score vs Topper</h2>
+                    <span class="bg-amber-100 text-amber-700 text-sm font-semibold px-3 py-1 rounded-full">72 marks below topper</span>
+                </div>
+                <div class="p-5 space-y-4">
+                    <div>
+                        <div class="flex justify-between text-sm mb-1"><span class="font-medium text-gray-700">You</span><span class="font-semibold text-blue-600">540 (75%)</span></div>
+                        <div class="bar-track h-4"><div class="bar-fill bg-blue-500" style="width:75%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1"><span class="font-medium text-gray-700">🔒 Topper <span class="text-xs text-gray-400">(anonymous)</span></span><span class="font-semibold text-amber-500">612 (85%)</span></div>
+                        <div class="bar-track h-4"><div class="bar-fill bg-amber-400" style="width:85%"></div></div>
+                    </div>
+
+                    <!-- Topper time taken (PC-15) -->
+                    <div class="flex items-center gap-2 bg-amber-50 border border-amber-100 rounded-lg px-3 py-2 text-sm text-amber-800">
+                        ⏱️ <span>Topper finished the full exam in <strong>2h 35m</strong> (of 3h)</span>
+                    </div>
+
+                    <!-- Subject-wise topper (PC-14) -->
+                    <div class="pt-3 border-t">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Subject-wise gap to topper</p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Physics</span><span class="text-amber-600 font-medium">-24 marks</span></div>
+                                <div class="bar-track h-3 mb-1"><div class="bar-fill bg-blue-500" style="width:73%"></div></div>
+                                <div class="bar-track h-3"><div class="bar-fill bg-amber-300" style="width:87%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Chemistry</span><span class="text-red-600 font-medium">-30 marks</span></div>
+                                <div class="bar-track h-3 mb-1"><div class="bar-fill bg-blue-500" style="width:67%"></div></div>
+                                <div class="bar-track h-3"><div class="bar-fill bg-amber-300" style="width:83%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Biology</span><span class="text-amber-600 font-medium">-18 marks</span></div>
+                                <div class="bar-track h-3 mb-1"><div class="bar-fill bg-blue-500" style="width:80%"></div></div>
+                                <div class="bar-track h-3"><div class="bar-fill bg-amber-300" style="width:85%"></div></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 mt-3 text-xs text-gray-500">
+                            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm bg-blue-500 inline-block"></span> You</span>
+                            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm bg-amber-300 inline-block"></span> Topper</span>
+                        </div>
+                    </div>
+
+                    <!-- Motivational message (PC-16) -->
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm text-blue-800">
+                        💪 <strong>You're close!</strong> A 72-mark gap is very catchable. Your biggest opportunity is <strong>Chemistry</strong> (-30) &mdash; tighten organic reactions and you could close most of the gap.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Anonymity note (PC-08) -->
+        <div class="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm text-gray-600 flex items-start gap-2">
+            🔒 <span>All peer comparisons are <strong>anonymous</strong>. No individual student names are ever shown &mdash; the topper appears only as &ldquo;Topper&rdquo;.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 2: ANALYTICS DASHBOARD (PC-3 + PC-4 + PC-5)            -->
+    <!-- ============================================================ -->
+    <section id="screen-dashboard" class="screen active">
+      <div class="max-w-6xl mx-auto p-6">
+        <!-- TABBED PREVIEW: sub-tabs unifying Dashboard + Peer Comparison -->
+        <div class="flex gap-1 mb-5 border-b border-gray-200">
+            <button onclick="showScreen('dashboard')" class="px-4 py-2.5 text-sm font-semibold border-b-2 border-green-600 text-green-700 -mb-px">📈 Analytics Dashboard</button>
+            <button onclick="showScreen('results')" class="px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700">📊 Peer Comparison</button>
+        </div>
+        <div class="mb-5 flex items-end justify-between flex-wrap gap-2">
+            <div>
+                <p class="text-xs text-gray-400 mb-1">Analytics Dashboard</p>
+                <h1 class="text-2xl font-bold text-gray-800">Performance Analytics</h1>
+                <p class="text-gray-500 text-sm">Based on 7 full-length mock tests &middot; Updated after each published result</p>
+            </div>
+            <button onclick="showScreen('acknowledge')" class="text-sm text-green-700 border border-green-200 bg-green-50 hover:bg-green-100 px-3 py-1.5 rounded-lg transition">↻ Replay first-time disclaimer</button>
+        </div>
+
+        <!-- PC-03: PEER COMPARISON ON DASHBOARD (with PC-06 red below-average example) -->
+        <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="px-5 py-4 border-b flex items-center justify-between flex-wrap gap-2">
+                <div>
+                    <h2 class="font-semibold text-gray-800">👥 Peer Comparison</h2>
+                    <p class="text-xs text-gray-500">Your performance vs class average &amp; topper, across all tests</p>
+                </div>
+                <button onclick="showScreen('results')" class="text-xs text-green-700 hover:underline">View detail — Peer Comparison →</button>
+            </div>
+            <div class="p-5 grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Overall vs class average -->
+                <div>
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Average vs class</p>
+                    <div class="bg-green-50 border border-green-100 rounded-xl p-4 text-center">
+                        <p class="text-3xl font-bold text-green-600">▲ +14%</p>
+                        <p class="text-sm text-gray-500">above class average overall</p>
+                    </div>
+                    <div class="mt-3 space-y-2">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Your average</span><span class="font-semibold text-blue-600">73%</span></div>
+                            <div class="bar-track h-3"><div class="bar-fill bg-blue-500" style="width:73%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Class average</span><span class="font-semibold text-gray-500">59%</span></div>
+                            <div class="bar-track h-3"><div class="bar-fill bg-gray-400" style="width:59%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent tests: shows BOTH green (above) and red (below) indicators (PC-06) -->
+                <div>
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Recent tests vs class average</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between border border-gray-200 rounded-lg px-3 py-2 text-sm">
+                            <span class="text-gray-700 truncate">NEET Mock — Set 5</span>
+                            <span class="font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded">▲ +15%</span>
+                        </div>
+                        <div class="flex items-center justify-between border border-gray-200 rounded-lg px-3 py-2 text-sm">
+                            <span class="text-gray-700 truncate">NEET Mock — Set 4</span>
+                            <span class="font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded">▲ +9%</span>
+                        </div>
+                        <div class="flex items-center justify-between border border-red-200 bg-red-50/40 rounded-lg px-3 py-2 text-sm">
+                            <span class="text-gray-700 truncate">Chemistry Chapter Test</span>
+                            <span class="font-semibold text-red-600 bg-red-50 px-2 py-0.5 rounded">▼ -10%</span>
+                        </div>
+                        <div class="flex items-center justify-between border border-gray-200 rounded-lg px-3 py-2 text-sm">
+                            <span class="text-gray-700 truncate">KCET Mock — Set 2</span>
+                            <span class="font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded">▲ +6%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vs topper: aggregate gap across tests (single-test detail lives on Page 1) -->
+                <div>
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Avg gap to topper</p>
+                    <div class="bg-amber-50 border border-amber-100 rounded-xl p-4 text-center">
+                        <p class="text-3xl font-bold text-amber-500">68 marks</p>
+                        <p class="text-sm text-gray-500">avg gap across 7 tests &middot; narrowing ▼</p>
+                    </div>
+                    <div class="mt-3">
+                        <p class="text-xs text-gray-500 mb-2">Gap to topper over time</p>
+                        <div class="flex items-end gap-1.5 h-16">
+                            <div class="flex-1 bg-amber-400 rounded-t" style="height:95%"></div>
+                            <div class="flex-1 bg-amber-400 rounded-t" style="height:88%"></div>
+                            <div class="flex-1 bg-amber-300 rounded-t" style="height:80%"></div>
+                            <div class="flex-1 bg-amber-300 rounded-t" style="height:72%"></div>
+                            <div class="flex-1 bg-amber-300 rounded-t" style="height:60%"></div>
+                        </div>
+                        <p class="text-xs text-green-600 mt-1">▼ Closing — from 96 to 72 marks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PC-3: PERCENTILE RANKING -->
+        <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="px-5 py-4 border-b">
+                <h2 class="font-semibold text-gray-800">📈 Percentile Ranking</h2>
+                <p class="text-xs text-gray-500">Your standing across all test takers</p>
+            </div>
+            <div class="p-5 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Headline percentile + trend -->
+                <div>
+                    <div class="bg-green-50 border border-green-100 rounded-xl p-5 text-center">
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">Overall Percentile</p>
+                        <p class="text-5xl font-extrabold text-green-600 my-1">Top 15%</p>
+                        <p class="text-sm text-gray-500">85th percentile &middot; among 47 test takers</p>
+                    </div>
+                    <!-- Trend over time (PC-19) -->
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mt-5 mb-2">Percentile trend</p>
+                    <svg viewBox="0 0 300 90" class="w-full h-24">
+                        <polyline fill="none" stroke="#16a34a" stroke-width="2.5"
+                            points="0,62 60,55 120,42 180,36 240,28 300,22" />
+                        <g fill="#16a34a">
+                            <circle cx="0" cy="62" r="3"/><circle cx="60" cy="55" r="3"/>
+                            <circle cx="120" cy="42" r="3"/><circle cx="180" cy="36" r="3"/>
+                            <circle cx="240" cy="28" r="3"/><circle cx="300" cy="22" r="3"/>
+                        </g>
+                    </svg>
+                    <div class="flex justify-between text-[10px] text-gray-400 -mt-1">
+                        <span>Test 1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>Test 7</span>
+                    </div>
+                    <p class="text-xs text-green-600 mt-1">▲ Improving — up from 62nd to 85th percentile</p>
+                </div>
+
+                <!-- By subject (PC-20) -->
+                <div>
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Percentile by subject</p>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Biology</span><span class="font-semibold text-green-600">Top 12% &middot; 88th</span></div>
+                            <div class="bar-track h-3"><div class="bar-fill bg-green-500" style="width:88%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Physics</span><span class="font-semibold text-green-600">Top 22% &middot; 78th</span></div>
+                            <div class="bar-track h-3"><div class="bar-fill bg-green-500" style="width:78%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Chemistry</span><span class="font-semibold text-amber-600">Top 35% &middot; 65th</span></div>
+                            <div class="bar-track h-3"><div class="bar-fill bg-amber-400" style="width:65%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="px-5 pb-5 -mt-1 text-[11px] text-gray-400">ℹ️ Percentile is shown only when a test has at least <strong>10 test takers</strong>.</p>
+        </div>
+
+        <!-- PC-4: PREDICTED EXAM SCORE -->
+        <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="px-5 py-4 border-b flex items-center justify-between flex-wrap gap-2">
+                <div>
+                    <h2 class="font-semibold text-gray-800">🔮 Predicted Exam Score</h2>
+                    <p class="text-xs text-gray-500">Faculty-calibrated estimate for NEET 2026</p>
+                </div>
+                <span class="bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">▲ Improving</span>
+            </div>
+            <div class="p-5 grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Headline range -->
+                <div>
+                    <div class="bg-gradient-to-br from-indigo-50 to-blue-50 border border-indigo-100 rounded-xl p-5 text-center">
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">Predicted Score Range</p>
+                        <p class="text-4xl font-extrabold text-indigo-600 my-1">560&ndash;610</p>
+                        <p class="text-sm text-gray-500">out of 720</p>
+                        <div class="mt-3 pt-3 border-t border-indigo-100">
+                            <p class="text-xs text-gray-500 uppercase tracking-wide">Predicted Rank Range</p>
+                            <p class="text-xl font-bold text-gray-800">6,500 &ndash; 9,800</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-gray-500 mt-3">
+                        <span>🎯 Accuracy target: <strong>≥80%</strong></span>
+                        <span>📚 7 of 5 mocks ✓</span>
+                    </div>
+                </div>
+
+                <!-- Subject-wise predicted (PC-31) -->
+                <div>
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Subject-wise predicted scores</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-700">Physics</span>
+                            <span class="font-semibold text-indigo-600">140&ndash;155 <span class="text-gray-400 font-normal">/180</span></span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-700">Chemistry</span>
+                            <span class="font-semibold text-amber-600">120&ndash;135 <span class="text-gray-400 font-normal">/180</span></span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-700">Biology</span>
+                            <span class="font-semibold text-green-600">300&ndash;320 <span class="text-gray-400 font-normal">/360</span></span>
+                        </div>
+                    </div>
+                    <!-- Trend mini (PC-30) -->
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mt-5 mb-2">Prediction trend</p>
+                    <div class="flex items-end gap-1.5 h-16">
+                        <div class="flex-1 bg-indigo-200 rounded-t" style="height:55%"></div>
+                        <div class="flex-1 bg-indigo-300 rounded-t" style="height:62%"></div>
+                        <div class="flex-1 bg-indigo-300 rounded-t" style="height:70%"></div>
+                        <div class="flex-1 bg-indigo-400 rounded-t" style="height:78%"></div>
+                        <div class="flex-1 bg-indigo-500 rounded-t" style="height:88%"></div>
+                    </div>
+                    <p class="text-xs text-green-600 mt-1">▲ Stable upward trend over last 5 mocks</p>
+                </div>
+
+                <!-- What to improve (PC-33 / PC-34) -->
+                <div>
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">What you need to improve</p>
+                    <div class="space-y-3">
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <p class="text-xs font-semibold text-gray-500 mb-1.5">🎯 Topics to focus</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="text-xs bg-red-50 text-red-600 border border-red-100 px-2 py-0.5 rounded">Organic Chemistry</span>
+                                <span class="text-xs bg-red-50 text-red-600 border border-red-100 px-2 py-0.5 rounded">Thermodynamics</span>
+                                <span class="text-xs bg-amber-50 text-amber-700 border border-amber-100 px-2 py-0.5 rounded">Electrostatics</span>
+                            </div>
+                        </div>
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <p class="text-xs font-semibold text-gray-500 mb-1.5">⚠️ Difficulty areas</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">High-difficulty numericals</span>
+                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Assertion-Reason</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disclaimer (PC-37/38/39) — always visible, not dismissible -->
+            <div class="mx-5 mb-5 bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex items-start gap-3">
+                <span class="text-lg">⚠️</span>
+                <div class="text-sm text-yellow-800">
+                    <strong>This is an estimate based on your practice performance. Actual exam results may vary.</strong>
+                    <p class="text-xs text-yellow-700 mt-1">Predictions are calibrated by faculty from your mock-test history and update after each published result. They are not a guarantee of your final exam score.</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 3: FIRST-TIME DISCLAIMER MODAL (PC-40 / PC-41)         -->
+    <!-- ============================================================ -->
+    <section id="screen-acknowledge" class="screen">
+      <div class="relative">
+        <!-- Blurred dashboard preview behind -->
+        <div class="max-w-6xl mx-auto p-6 pointer-events-none select-none" style="filter: blur(3px); opacity:.55;">
+            <h1 class="text-2xl font-bold text-gray-800 mb-4">Performance Analytics</h1>
+            <div class="bg-white rounded-lg shadow-sm p-5 mb-6 h-40"></div>
+            <div class="bg-white rounded-lg shadow-sm p-5 h-56"></div>
+        </div>
+
+        <!-- Modal overlay -->
+        <div class="absolute inset-0 bg-gray-900/40 flex items-start justify-center p-6 pt-16">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full fade-in overflow-hidden">
+                <div class="bg-green-700 text-white px-6 py-4 flex items-center gap-2">
+                    <span class="text-xl">🔮</span>
+                    <h2 class="text-lg font-semibold">Before you see your predictions</h2>
+                </div>
+                <div class="p-6">
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800 mb-4">
+                        <strong>This is an estimate based on your practice performance. Actual exam results may vary.</strong>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Please read and acknowledge how predictions work:</p>
+                    <ul class="space-y-2 text-sm text-gray-700 mb-5">
+                        <li class="flex gap-2">✅ <span>Predicted scores are <strong>estimates</strong>, not guarantees of your exam result.</span></li>
+                        <li class="flex gap-2">📊 <span>They are calibrated by faculty from your <strong>mock-test history</strong> and exam difficulty.</span></li>
+                        <li class="flex gap-2">🔁 <span>Your prediction <strong>updates after each new test</strong>, as soon as your results are published.</span></li>
+                        <li class="flex gap-2">🎯 <span>We target <strong>at least 80% accuracy</strong>, but real exams can differ.</span></li>
+                    </ul>
+                    <label class="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-lg p-3 cursor-pointer">
+                        <input type="checkbox" id="ackCheck" onchange="document.getElementById('ackBtn').disabled = !this.checked" class="mt-0.5 w-4 h-4 text-green-600 rounded focus:ring-green-500">
+                        <span class="text-sm text-gray-700">I understand that predictions are estimates and may differ from my actual exam results, and I accept the <a href="#" onclick="return false;" class="text-green-700 underline hover:text-green-800">updated Terms of Service</a>.</span>
+                    </label>
+                    <p class="text-[11px] text-gray-400 mt-2">🕒 Your acknowledgment and timestamp will be recorded (one time only). The <a href="#" onclick="return false;" class="underline hover:text-gray-600">Terms of Service</a> now include prediction limitations.</p>
+
+                    <div class="flex justify-end gap-3 mt-5">
+                        <button onclick="showScreen('dashboard')" class="border border-gray-300 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 text-sm font-medium transition">Maybe later</button>
+                        <button id="ackBtn" disabled onclick="acknowledge()" class="bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-5 py-2.5 rounded-lg hover:bg-green-700 text-sm font-semibold transition">I Understand &mdash; Show My Predictions</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 4: NOT ENOUGH DATA (PC-28)                            -->
+    <!-- ============================================================ -->
+    <section id="screen-empty" class="screen">
+      <div class="max-w-6xl mx-auto p-6">
+        <div class="mb-5">
+            <p class="text-xs text-gray-400 mb-1">Analytics Dashboard</p>
+            <h1 class="text-2xl font-bold text-gray-800">Performance Analytics</h1>
+            <p class="text-gray-500 text-sm">Based on 2 full-length mock tests &middot; Some sections unlock as you progress</p>
+        </div>
+
+        <!-- Early-stage warning banner -->
+        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm text-amber-800 mb-6 flex items-start gap-2">
+            ⚠️ <span>You're just getting started. Your analytics will fill in as more classmates take the same tests and as you complete more full-length mocks. Sections below show what's still needed.</span>
+        </div>
+
+        <!-- Same sections & order as the dashboard (PC-03 / PC-17 / PC-23), each in an empty state -->
+
+        <!-- Peer Comparison (empty) -->
+        <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="px-5 py-4 border-b">
+                <h2 class="font-semibold text-gray-800">👥 Peer Comparison</h2>
+                <p class="text-xs text-gray-500">Your performance vs class average &amp; topper, across all tests</p>
+            </div>
+            <div class="p-10 text-center">
+                <div class="text-4xl mb-3">👥</div>
+                <h3 class="text-base font-semibold text-gray-800">Comparison not available yet</h3>
+                <p class="text-sm text-gray-500 max-w-md mx-auto mt-1">We need at least <strong>10 classmates</strong> to have taken the same test before we can show your class average and topper comparison anonymously. Your latest test had <strong>6</strong>.</p>
+            </div>
+        </div>
+
+        <!-- Percentile Ranking (empty) -->
+        <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="px-5 py-4 border-b">
+                <h2 class="font-semibold text-gray-800">📈 Percentile Ranking</h2>
+                <p class="text-xs text-gray-500">Your standing across all test takers</p>
+            </div>
+            <div class="p-10 text-center">
+                <div class="text-4xl mb-3">📊</div>
+                <h3 class="text-base font-semibold text-gray-800">Percentile not available for this test</h3>
+                <p class="text-sm text-gray-500 max-w-md mx-auto mt-1">A test needs at least <strong>10 test takers</strong> before we can show your percentile. This test currently has <strong>6</strong>.</p>
+            </div>
+        </div>
+
+        <!-- Predicted Exam Score (empty) -->
+        <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="px-5 py-4 border-b">
+                <h2 class="font-semibold text-gray-800">🔮 Predicted Exam Score</h2>
+                <p class="text-xs text-gray-500">Faculty-calibrated estimate for NEET 2026</p>
+            </div>
+            <div class="p-10 text-center">
+                <div class="text-5xl mb-3">🔒</div>
+                <h3 class="text-lg font-semibold text-gray-800">Not enough data yet</h3>
+                <p class="text-sm text-gray-500 max-w-md mx-auto mt-1">Complete at least <strong>5 full-length mock tests</strong> to unlock your predicted exam score, predicted rank and improvement plan.</p>
+
+                <!-- Progress -->
+                <div class="max-w-sm mx-auto mt-6">
+                    <div class="flex justify-between text-sm mb-1"><span class="text-gray-600 font-medium">Mock tests completed</span><span class="font-semibold text-indigo-600">2 of 5</span></div>
+                    <div class="bar-track h-3"><div class="bar-fill bg-indigo-500" style="width:40%"></div></div>
+                    <p class="text-xs text-gray-400 mt-2">3 more full-length mocks to go.</p>
+                </div>
+
+                <button class="mt-6 bg-green-600 text-white px-6 py-2.5 rounded-lg hover:bg-green-700 text-sm font-semibold transition">📝 Browse Mock Tests</button>
+            </div>
+
+            <!-- Disclaimer still visible (PC-39) -->
+            <div class="mx-5 mb-5 bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
+                <strong>This is an estimate based on your practice performance. Actual exam results may vary.</strong>
+            </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Bottom Nav -->
+    <div class="max-w-6xl mx-auto px-6 pb-8 pt-2 flex justify-between items-center">
+        <span class="text-xs text-gray-400">P3-02 — Peer Comparison &amp; Predictions | Phase 3 Mockup</span>
+        <span class="text-xs text-gray-400">Standard &amp; Advanced tiers only</span>
+    </div>
+
+    <script>
+        function showScreen(name) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('screen-' + name).classList.add('active');
+            document.getElementById('backBar').style.display = (name === 'index') ? 'none' : 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function acknowledge() {
+            showScreen('dashboard');
+        }
+    </script>
+</body>
+</html>
